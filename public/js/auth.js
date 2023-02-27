@@ -5,7 +5,7 @@ export const login = async (email, password) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:8000/api/v1/users/login",
+      url: "/api/v1/users/login",
       data: {
         email,
         password,
@@ -34,7 +34,7 @@ export const logOut = async () => {
   try {
     const res = await axios({
       method: "GET",
-      url: "http://127.0.0.1:8000/api/v1/users/logout",
+      url: "/api/v1/users/logout",
     });
 
     if (res.data.message === "success") {
@@ -57,7 +57,7 @@ export const signUp = async (name, email, password, passwordConfirm) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://127.0.0.1:8000/api/v1/users/signup",
+      url: "/api/v1/users/signup",
       data: {
         name,
         email,
@@ -85,7 +85,7 @@ export const signUp = async (name, email, password, passwordConfirm) => {
 export const forgotPassword = async (email) => {
   try {
     const res = await axios({
-      url: "http://127.0.0.1:8000/api/v1/users/forgotPassword",
+      url: "/api/v1/users/forgotPassword",
       method: "POST",
       data: {
         email,
@@ -107,7 +107,7 @@ export const forgotPassword = async (email) => {
 export const resetPassword = async (token, password, passwordConfirm) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/users/resetPassword/${token}`,
+      url: `/api/v1/users/resetPassword/${token}`,
       method: "PATCH",
       data: {
         password,
@@ -134,7 +134,7 @@ export const updatePassword = async (
 ) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/users/updatePassword`,
+      url: `/api/v1/users/updatePassword`,
       method: "PATCH",
       data: {
         passwordCurrent,
@@ -158,7 +158,7 @@ export const updatePassword = async (
 export const deleteMe = async () => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/users/deleteMe`,
+      url: `/api/v1/users/deleteMe`,
       method: "PATCH",
     });
 
@@ -181,7 +181,7 @@ export const deleteMe = async () => {
 export const updateMe = async (data) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/users/updateMe`,
+      url: `/api/v1/users/updateMe`,
       method: "PATCH",
       data,
     });

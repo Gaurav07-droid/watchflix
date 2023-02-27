@@ -4,7 +4,7 @@ import { showAlert } from "./alert";
 export const addMovie = async (data) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/movies`,
+      url: `/api/v1/movies`,
       method: "POST",
       data,
     });
@@ -27,7 +27,7 @@ export const addMovie = async (data) => {
 export const likeMovie = async (slug) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/movies/${slug}/like`,
+      url: `/api/v1/movies/${slug}/like`,
       method: "POST",
     });
 
@@ -49,7 +49,7 @@ export const likeMovie = async (slug) => {
 export const dislikeMovie = async (slug) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/movies/${slug}/dislike`,
+      url: `/api/v1/movies/${slug}/dislike`,
       method: "POST",
     });
 
@@ -71,7 +71,7 @@ export const dislikeMovie = async (slug) => {
 export const addToWatchList = async (slug) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/users/${slug}/watchlist/add`,
+      url: `/api/v1/users/${slug}/watchlist/add`,
       method: "POST",
     });
 
@@ -94,7 +94,7 @@ export const addToWatchList = async (slug) => {
 export const removeFromWatchList = async (slug) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/users/${slug}/watchlist/remove`,
+      url: `/api/v1/users/${slug}/watchlist/remove`,
       method: "POST",
     });
 
@@ -113,7 +113,7 @@ export const removeFromWatchList = async (slug) => {
 export const deleteMovie = async (id) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/movies/${id}`,
+      url: `/api/v1/movies/${id}`,
       method: "DELETE",
     });
 
@@ -135,7 +135,7 @@ export const deleteMovie = async (id) => {
 export const giveReview = async (id, review, rating) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/movies/${id}/reviews`,
+      url: `/api/v1/movies/${id}/reviews`,
       method: "POST",
       data: {
         review,
@@ -162,7 +162,7 @@ export const giveReview = async (id, review, rating) => {
 export const deleteMovieReview = async (id) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/reviews/${id}`,
+      url: `/api/v1/reviews/${id}`,
       method: "Delete",
     });
 
@@ -185,7 +185,7 @@ export const deleteMovieReview = async (id) => {
 export const getSearchedMovies = async (name) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/movies?name=${name}`,
+      url: `/api/v1/movies?name=${name}`,
       method: "DELETE",
     });
 

@@ -4,7 +4,7 @@ import { showAlert } from "./alert";
 export const deteleGenre = async (genName) => {
   try {
     const res = await axios({
-      url: `http://127.0.0.1:8000/api/v1/genre/${genName}`,
+      url: `/api/v1/genre/${genName}`,
       method: "DELETE",
     });
 
