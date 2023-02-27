@@ -1,0 +1,24 @@
+extend base
+
+block content
+    main.main
+        div.activity-cont
+            div.stats-para 
+                P Here is your day to day activities recorded by us only for your optimal usage. Your data will not be shown to other as per our privacy policy.✔
+            div.stats-cont
+                div.like-counts
+                    h1.count-likes #{likes.length}
+                    h1.heading-likes Likes ✔
+                div.dislike-counts
+                    h1.count-likes #{dislikes.length}
+                    h1.heading-likes Dislikes ❌
+        div.stats-cont-2
+            div.watched-counts
+                h1.count-watched 1
+                h1.heading-reviwed Watched 👀
+            div.reviewed-counts
+                h1.count-watched #{reviews.length}
+                h1.heading-reviwed Reviewed ❕
+                
+        
+        
