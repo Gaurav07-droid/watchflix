@@ -212,7 +212,7 @@ const ctx = document.getElementById("myChart");
 export async function gettingUserStats() {
   try {
     const res = await axios({
-      url: "http://127.0.0.1:8000/api/v1/users/my-stats",
+      url: "api/v1/users/my-stats",
     });
     let stats = [];
 
