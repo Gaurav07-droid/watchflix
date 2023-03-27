@@ -1426,11 +1426,11 @@ input[type="text"] {
 }
 
 .movie-frame {
-  width: 1100px;
+  width: 980px;
   height: 550px;
-  /* margin-left: 120px; */
   margin-top: 10px;
   border-radius: 5px;
+  border-style: ridge;
   margin-left: 202px;
 }
 
@@ -1798,4 +1798,24 @@ a:hover {
   color: white;
   font-weight: bold;
   margin-left: 25px;
+}
+
+.chart-wrapper {
+  display: flex;
+  width: 500px;
+  height: 400px;
+  margin-top: 25px;
+  margin-left: 500px;
+}
+
+.user-stats {
+  margin-left: 25px;
+  font-size: 25px;
+  background-color: red;
+  color: white;
+  width: 155px;
+  cursor: pointer;
+  margin-left: 600px;
+  border-radius: 5px;
+  margin-top: -55px;
 }

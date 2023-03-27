@@ -204,3 +204,43 @@ export const getSearchedMovies = async (name) => {
     // }, 2000);
   }
 };
+
+//Adding the user Statictics
+
+const ctx = document.getElementById("myChart");
+
+export async function gettingUserStats() {
+  try {
+    const res = await axios({
+      url: "http://127.0.0.1:8000/api/v1/users/my-stats",
+    });
+    let stats = [];
+
+    if (res.data.status === "success") {
+      Object.values(res.data.resp).forEach((el) => {
+        stats.push(el);
+      });
+
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Likes", "Dislikes", "Reviews"],
+          datasets: [
+            {
+              label: "Number of activiy",
+              data: stats,
+              borderWidth: 10,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+        },
+      });
+    }
+  } catch (err) {
+    showAlert("error", "Chart is already displayed!");
+  }
+}
+
+// console.log(stats);

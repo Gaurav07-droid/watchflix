@@ -186,16 +186,13 @@ exports.manageUsers = catchAsync(async (req, res, next) => {
 });
 
 exports.myActivity = catchAsync(async (req, res, next) => {
-  const likes = await Movie.find({ likes: req.user.id });
-  const dislikes = await Movie.find({ dislikes: req.user.id });
+  // const likes = await Movie.find({ likes: req.user.id });
+  // const dislikes = await Movie.find({ dislikes: req.user.id });
 
-  const reviews = await Review.find({ user: req.user.id });
+  // const reviews = await Review.find({ user: req.user.id });
 
   res.status(200).render("myActivity", {
     title: "My activity",
-    likes,
-    dislikes,
-    reviews,
   });
 });
 

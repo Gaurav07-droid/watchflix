@@ -17,6 +17,8 @@ router.patch("/updatePassword", authController.updatePassword);
 router.post("/:movSlug/watchlist/add", userController.addToWatchList);
 router.post("/:movSlug/watchlist/remove", userController.removeFromWatchList);
 
+router.route("/my-stats").get(userController.getMyStats);
+
 router
   .route("/updateMe")
   .patch(

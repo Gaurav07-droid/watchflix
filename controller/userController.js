@@ -141,3 +141,23 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     data: Updateduser,
   });
 });
+
+exports.getMyStats = catchAsync(async (req, res, next) => {
+  let userId = req.user.id;
+  let resp = {};
+
+  const likes = Movie.find({ likes: userId });
+  const dislikes = Movie.find({ dislikes: userId });
+  const reviews = Review.find({ user: userId });
+
+  let data = await Promise.all([likes, dislikes, reviews]);
+
+  resp.likes = data[0].length;
+  resp.dislikes = data[1].length;
+  resp.reviews = data[2].length;
+
+  res.status(200).json({
+    status: "success",
+    resp,
+  });
+});

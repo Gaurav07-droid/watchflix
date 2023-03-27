@@ -23,6 +23,7 @@ import {
   getSearchedMovies,
   deleteMovieReview,
   addMovie,
+  gettingUserStats,
 } from "./movieFunc.js";
 
 const inputUserName = document.getElementById("user-name");
@@ -51,6 +52,9 @@ const btnDeleteMovie = document.querySelectorAll(".deletemovie");
 const btnDeleteGenre = document.querySelectorAll(".deletegenre");
 const btnDeleteMe = document.getElementById("delete-me");
 const btnDeleteReview = document.querySelectorAll(".deleteReview");
+const btnGetUserStats = document.querySelector(".user-stats");
+
+const movFrame = document.querySelector(".movie-frame");
 
 const formAddMovie = document.querySelector(".form-add-movie");
 const formLogin = document.querySelector(".form_login");
@@ -252,4 +256,11 @@ if (formAddMovie)
     addMovie(form);
 
     document.getElementById("add-movie").textContent = "Adding..";
+  });
+
+if (btnGetUserStats)
+  btnGetUserStats.addEventListener("click", () => {
+    gettingUserStats();
+
+    document.querySelector(".user-stats").style.opacity = 0;
   });
