@@ -163,11 +163,11 @@ export const deleteMovieReview = async (id) => {
   try {
     const res = await axios({
       url: `/api/v1/reviews/${id}`,
-      method: "Delete",
+      method: "DELETE",
     });
 
-    if (res.data.status == "success") {
-      showAlert("success", "Result fetched!");
+    if (res.status === 204) {
+      showAlert("success", "Review Deleted Successfully!");
 
       window.setTimeout(() => {
         location.reload(true);
@@ -182,28 +182,28 @@ export const deleteMovieReview = async (id) => {
   }
 };
 
-export const getSearchedMovies = async (name) => {
-  try {
-    const res = await axios({
-      url: `/api/v1/movies?name=${name}`,
-      method: "DELETE",
-    });
+// export const getSearchedMovies = async (name) => {
+//   try {
+//     const res = await axios({
+//       url: `/api/v1/movies?name=${name}`,
+//       method: "DELETE",
+//     });
 
-    if (res.status == 204) {
-      showAlert("success", "Review deleted succesfully!");
+//     if (res.status == 204) {
+//       showAlert("success", "Review deleted succesfully!");
 
-      // window.setTimeout(() => {
-      //   location.reload(true);
-      // }, 2000);
-    }
-  } catch (err) {
-    showAlert("error", err.response.data.message);
+//       // window.setTimeout(() => {
+//       //   location.reload(true);
+//       // }, 2000);
+//     }
+//   } catch (err) {
+//     showAlert("error", err.response.data.message);
 
-    // window.setTimeout(() => {
-    //   location.reload(true);
-    // }, 2000);
-  }
-};
+//     // window.setTimeout(() => {
+//     //   location.reload(true);
+//     // }, 2000);
+//   }
+// };
 
 //Adding the user Statictics
 

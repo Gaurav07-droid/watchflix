@@ -76,9 +76,9 @@ export const signUp = async (name, email, password, passwordConfirm) => {
   } catch (err) {
     // console.log(err);
     showAlert("error", err.response.data.message);
-    window.setTimeout(() => {
-      location.reload(true);
-    }, 2000);
+    // window.setTimeout(() => {
+    //   location.reload(true);
+    // }, 2000);
   }
 };
 
@@ -96,7 +96,7 @@ export const forgotPassword = async (email) => {
       showAlert("success", res.data.message);
 
       window.setTimeout(() => {
-        location.assign("/reset-password");
+        location.assign("/");
       }, 1500);
     }
   } catch (err) {
@@ -119,7 +119,7 @@ export const resetPassword = async (token, password, passwordConfirm) => {
       showAlert("success", "Password reseted sucessfully");
 
       window.setTimeout(() => {
-        location.assign("/genre");
+        location.assign("/");
       }, 1500);
     }
   } catch (err) {
@@ -194,6 +194,26 @@ export const updateMe = async (data) => {
       }, 1500);
     }
   } catch (err) {
+    showAlert("error", err.response.data.message);
+  }
+};
+
+export const deleteAUser = async (userId) => {
+  try {
+    const res = await axios({
+      url: `/api/v1/users/${userId}`,
+      method: "DELETE",
+    });
+
+    if (res.status === 204) {
+      showAlert("success", "User Deleted   sucessfully");
+
+      window.setTimeout(() => {
+        location.reload(true);
+      }, 2000);
+    }
+  } catch (err) {
+    console.log(err);
     showAlert("error", err.response.data.message);
   }
 };

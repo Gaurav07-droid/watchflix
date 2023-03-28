@@ -9,6 +9,7 @@ import {
   updatePassword,
   deleteMe,
   updateMe,
+  deleteAUser,
 } from "./auth.js";
 
 import { deteleGenre } from "./genreFunc.js";
@@ -53,6 +54,7 @@ const btnDeleteGenre = document.querySelectorAll(".deletegenre");
 const btnDeleteMe = document.getElementById("delete-me");
 const btnDeleteReview = document.querySelectorAll(".deleteReview");
 const btnGetUserStats = document.querySelector(".user-stats");
+const btnDeleteUser = document.querySelectorAll(".deleteUser");
 
 const movFrame = document.querySelector(".movie-frame");
 
@@ -108,7 +110,8 @@ if (resetPassForm)
     // resetPassword(resetToken.value, password.value, confPassword.value);
     if (resetToken.value && inputPass.value && inputConfPass.value) {
       resetPassword(resetToken.value, inputPass.value, inputConfPass.value);
-      e.target.textContent = "resetting...";
+
+      document.getElementById("passResetBtn").textContent = "Resetting..";
     }
   });
 
@@ -224,6 +227,15 @@ if (btnDeleteReview) {
     })
   );
 }
+
+if (btnDeleteUser)
+  btnDeleteUser.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      let userId = e.target.dataset.id;
+
+      deleteAUser(userId);
+    });
+  });
 
 if (formUpdateMe) {
   formUpdateMe.addEventListener("submit", (e) => {

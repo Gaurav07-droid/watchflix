@@ -1571,6 +1571,11 @@ input[type="text"] {
   border-radius: 5px;
 }
 
+.deleteUser {
+  background-color: red;
+  width: 298px;
+}
+
 .rev-container {
   display: flex;
   margin-top: 5px;

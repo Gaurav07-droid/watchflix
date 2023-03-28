@@ -1,5 +1,7 @@
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
+const { validationResult } = require("express-validator");
+
 const User = require("../models/userModel");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
@@ -39,6 +41,17 @@ const createSendToken = function (req, user, statusCode, res) {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
+  let errors = validationResult(req);
+
+  console.log(errors);
+
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      status: "fail",
+      message: "OOps! Something went very wrong please try again",
+    });
+  }
+
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -48,7 +61,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     role: req.body.role,
   });
 
-  const url = `${req.protocol}://${req.get("host")}/me`;
+  const url = `${req.protocol}://${req.get("host")}/account`;
 
   await new Email(newUser, url).sendWelcome();
 
@@ -211,7 +224,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   //send it to the email
   try {
-    const resetURL = `${resetToken}`;
+    const url = `${req.protocol}://${req.get("host")}/reset-password`;
+
+    const resetURL = `${url} ${resetToken}`;
 
     await new Email(user, resetURL).sendPasswordToken();
 
